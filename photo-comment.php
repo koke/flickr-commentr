@@ -1,12 +1,13 @@
     <?php
     require_once "RESTclient.php";
+    require "config.php";
     
     $photo_url = $_GET["photo_url"];
     if (preg_match("#^http://(www.)?flickr.com/photos/([^/]+)/([^/]+)/?#", $photo_url, $matches)) {
       $photo_id = $matches[3];
 
       $params = array(
-        'api_key'  => 'f234decfe77159e9ea36eac463cb9524',
+        'api_key'  => $api_key,
       	'method'	=> 'flickr.photos.getInfo',
       	'photo_id'	=> $photo_id,
       	'format'	=> 'php_serial',
